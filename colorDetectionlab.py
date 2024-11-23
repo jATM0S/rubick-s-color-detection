@@ -138,20 +138,23 @@ def get_closest_color(bgr):
     """
     prominent_color_palette = {
             'red'   : (0, 0, 255),
-            'orange': (0, 165, 255),
+            'orange': (30, 10, 255),
             'blue'  : (255, 0, 0),
             'green' : (0, 255, 0),
             'white' : (255, 255, 255),
             'yellow': (0, 255, 255)
         }
     lab = bgr2lab(bgr)
+    print('lab:',lab)
     distances = []
     for color_name, color_bgr in prominent_color_palette.items():
+        distance=ciede2000(lab, bgr2lab(color_bgr))
         distances.append({
             'color_name': color_name,
             'color_bgr': color_bgr,
-            'distance': ciede2000(lab, bgr2lab(color_bgr))
+            'distance': distance
         })
+        print(color_bgr,distance)
     closest = min(distances, key=lambda item: item['distance'])
     return closest
 
