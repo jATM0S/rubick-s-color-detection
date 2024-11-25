@@ -1,22 +1,21 @@
 import cv2
 import numpy as np
 def get_color_name(h, s, v):
-    if s < 20 and v > 200:
-        return "White"
+    print(h,s,v)
+    if s < 65 and v > 50:
+        return "white"
     if v < 50:
-        return "Black"
-    if h < 10 or h > 160:
-        return "Red"
-    if 10 <= h < 25:
-        return "Orange"
-    if 25 <= h < 35:
-        return "Yellow"
-    if 35 <= h < 85:
-        return "Green"
-    if 85 <= h < 125:
-        return "Blue"
-    if 125 <= h < 160:
-        return "Purple"
+        return "black"
+    if  1 < h < 27:
+        return "orange"
+    if 27 <= h < 45:
+        return "yellow"
+    if 45 <= h < 85:
+        return "green"
+    if 85 <= h < 160:
+        return "blue"
+    if h<=1 or h > 160:
+        return "red"
     return "Unknown"
 def get_dominant_rgb_color(roi):
     """ Get dominant RGB from a certain region of interest.
